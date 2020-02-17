@@ -5320,7 +5320,7 @@ loader-utils@^0.2.16:
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.0, loader-utils@^1.2.3:
+loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3:
   version "1.2.3"
   resolved "https://registry.npm.taobao.org/loader-utils/download/loader-utils-1.2.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Floader-utils%2Fdownload%2Floader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
   integrity sha1-H/XcaRHJ8KBiUxpMBLYJQGEIwsc=
@@ -5474,6 +5474,11 @@ map-visit@^1.0.0:
   integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
   dependencies:
     object-visit "^1.0.0"
+
+material-design-icons-iconfont@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/material-design-icons-iconfont/-/material-design-icons-iconfont-5.0.1.tgz#371875ed7fe9c8c520bc7123c3231feeab731c31"
+  integrity sha512-Xg6rIdGrfySTqiTZ6d+nQbcFepS6R4uKbJP0oAqyeZXJY/bX6mZDnOmmUJusqLXfhIwirs0c++a6JpqVa8RFvA==
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -8707,7 +8712,7 @@ vue@2.6.11, vue@^2.6.10:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
 
-vuejs-logger@^1.5.3:
+vuejs-logger@1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/vuejs-logger/-/vuejs-logger-1.5.4.tgz#c8bb12ed29ca90b8087144a44ad852d9bd170c6e"
   integrity sha512-Bg4/HNodE83KD7HVdHFwgfAFuZdkqSqOA0G3WpN5+LWF2GKmZnl9qlM/hHZmjADaF8elxOLiFpQmu4hI3zn3JQ==
@@ -8715,14 +8720,14 @@ vuejs-logger@^1.5.3:
     es6-object-assign "1.1.0"
     vue "2.6.11"
 
-vuetify-loader@^1.2.2:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/vuetify-loader/-/vuetify-loader-1.4.3.tgz#df1323c558be09890877e5fbe817b3a71a6c538d"
-  integrity sha512-fS0wRil682Ebsj2as+eruBoMPKaQYDhu/fDAndnTItzSY4RK4LOEIsssVL4vD6QY8dvUgoGL84SUQ6vGr777CA==
+vuetify-loader@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/vuetify-loader/-/vuetify-loader-1.2.2.tgz#7c221dcfd8482344518818d598f9cef8ddd85b6b"
+  integrity sha512-j6KWPuwQ4xTxPDksbFwbSJle7+3oSjNvJ/CViTEgbPLFPqnNsR8JUtRldURIQ0cmAmr0/CoLSZkj0B8JKqOBMA==
   dependencies:
-    loader-utils "^1.2.0"
+    loader-utils "^1.1.0"
 
-vuetify@^1.5.16:
+vuetify@^1.5.8:
   version "1.5.22"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-1.5.22.tgz#18417ac675c9085946b37cdbbfe9fc010c5cec27"
   integrity sha512-WtfB6fe1+Fsf56nR6LGSh7YgUXp/iF0k9Igtf1XnODjV8OOD8A63ACVD5aG34FhUZS0CgqkcXjyG6EYuz/LFYA==

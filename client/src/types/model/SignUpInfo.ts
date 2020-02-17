@@ -1,8 +1,8 @@
 export default class SignUpInfo implements SignUpInfoModel {
-    userId!: string
-    userPw!: string
-    email!: string
-    phoneNumber!: string
+    userId: string
+    userPw: string
+    email: string
+    phoneNumber: string
 
     /**
      * 전송을 위한 옵션 데이터를 리턴한다.
