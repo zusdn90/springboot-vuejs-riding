@@ -1,2 +1,2 @@
-# springboot-vue-example
-SpringBoot + vue (vue-cli)
+# springboot-vue-riding
+SpringBoot + vue (vue-cli) + Typescript
