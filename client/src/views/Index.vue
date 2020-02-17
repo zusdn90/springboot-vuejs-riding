@@ -1,31 +1,30 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      fixed
       app
+      fixed
     >
       <v-list dense>
         <v-list-tile >
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile >
           <v-list-tile-action>
-            <v-icon>contact_mail</v-icon>
+            <v-list-tile-content>
+              <v-list-tile-title>Home</v-list-tile-title>
+            </v-list-tile-content>
           </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Contact</v-list-tile-title>
-          </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar class="grey darken-3" dark fixed app>
       <v-toolbar-side-icon ></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>서울 자전거</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+      <v-btn flat to='/login'>로그인</v-btn>
+      <v-btn flat>회원가입</v-btn>
+    </v-toolbar-items>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
@@ -82,7 +81,7 @@
       </v-card-title>
 
       <v-card-actions class="grey darken-3 justify-center">
-        &copy;2020 — <strong>riding</strong>
+        &copy;2020 — <strong>따릉이 토이 프로젝트</strong>
       </v-card-actions>
     </v-card>
   </v-footer>

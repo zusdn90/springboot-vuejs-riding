@@ -6,13 +6,16 @@ const routes = [
     name: 'index',
     component: () => import('@/views/Index.vue'),
     meta: {
-      title: appId,
-      authority: ''
+      title: appId
     },
     children: [
       {
         path: '/intro',
         component: () => import('@/views/Intro.vue')
+      },
+      {
+        path: '/login',
+        component: () => import('@/views/login/Login.vue')
       }
     ]
   },
