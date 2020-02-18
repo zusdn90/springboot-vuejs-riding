@@ -1,3 +1,6 @@
+import { Role } from '@/types/enum'
+
+// const title = process.env.COMPANY_NM
 const appId = process.env.APP_ID
 
 const routes = [
@@ -6,7 +9,8 @@ const routes = [
     name: 'index',
     component: () => import('@/views/Index.vue'),
     meta: {
-      title: appId
+      title: appId,
+      authority: [Role.NONE]
     },
     children: [
       {
@@ -15,7 +19,7 @@ const routes = [
       },
       {
         path: '/login',
-        component: () => import('@/views/login/Login.vue')
+        component: () => import('@/views/login/UserLogin.vue')
       }
     ]
   },

@@ -42,16 +42,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
-// import router from '../../router/routes'
+import { Component, Vue, Watch } from "vue-property-decorator"
 
 @Component
-export default class Index extends Vue {
+export default class UserLogin extends Vue {
   // ------------------------------------------------------------
   // lifecyle hook
   mounted () {
-    // this.$router.push('intro')
-
+    // this.$router.replace('intro')
   }
 }
 </script>

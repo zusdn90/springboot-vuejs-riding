@@ -31,7 +31,8 @@
            <v-card
               class="pa-3"
               flat
-              height="300px"
+              height="600px"
+              width="600px"
               img="https://cdn.vuetifyjs.com/images/toolbar/map.jpg"
             >
               <v-toolbar
@@ -55,36 +56,36 @@
             </v-card>
       </v-container>
     </v-content>
-      <v-footer
-    dark
-    height="auto"
-  >
-    <v-card
-      class="flex"
-      flat
-      tile
+    <v-footer
+      dark
+      height="auto"
     >
-      <v-card-title class="teal">
-        <strong class="subheading">Get connected with us on social networks!</strong>
-
-        <v-spacer></v-spacer>
-
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-3"
-          dark
-          icon
+        <v-card
+          class="flex"
+          flat
+          tile
         >
-          <v-icon size="24px">{{ icon }}</v-icon>
-        </v-btn>
-      </v-card-title>
+          <v-card-title class="teal">
+            <strong class="subheading">Get connected with us on social networks!</strong>
 
-      <v-card-actions class="grey darken-3 justify-center">
-        &copy;2020 — <strong>따릉이 토이 프로젝트</strong>
-      </v-card-actions>
-    </v-card>
-  </v-footer>
+            <v-spacer></v-spacer>
+
+            <v-btn
+              v-for="icon in icons"
+              :key="icon"
+              class="mx-3"
+              dark
+              icon
+            >
+              <v-icon size="24px">{{ icon }}</v-icon>
+            </v-btn>
+          </v-card-title>
+
+          <v-card-actions class="grey darken-3 justify-center">
+            &copy;2020 — <strong>따릉이 토이 프로젝트</strong>
+          </v-card-actions>
+        </v-card>
+      </v-footer>
   </v-app>
 </template>
 
@@ -104,7 +105,7 @@ export default class Index extends Vue {
   // ------------------------------------------------------------
   // lifecyle hook
   mounted () {
-    // this.$router.push('intro')
+    // this.$router.replace('intro')
   }
 }
 </script>

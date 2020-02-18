@@ -1,5 +1,6 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/dist/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/static/" : "/",
+  assetsDir: 'static',
   outputDir: "../server/public/dist", // 빌드 시 저장될 디렉토리 지정
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
