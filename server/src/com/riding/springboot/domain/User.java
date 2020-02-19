@@ -8,9 +8,7 @@ public class User {
     @Id // 기본키임을 명시
     @GeneratedValue(strategy=GenerationType.AUTO)   //기본키값을 자동으로 증가하도록 설정
     private Integer id;
-
     private String name;
-
     private String email;
 
     public Integer getId() {
