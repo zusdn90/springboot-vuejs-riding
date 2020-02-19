@@ -11,17 +11,26 @@ const routes = [
     meta: {
       title: appId,
       authority: [Role.NONE]
-    },
-    children: [
-      {
-        path: '/intro',
-        component: () => import('@/views/Intro.vue')
-      },
-      {
-        path: '/login',
-        component: () => import('@/views/login/UserLogin.vue')
-      }
-    ]
+    }
+    // Nested Routes
+    // children: [
+    //   {
+    //     path: '/intro',
+    //     component: () => import('@/views/Intro.vue')
+    //   },
+    //   {
+    //     path: '/login',
+    //     component: () => import('@/views/login/UserLogin.vue')
+    //   }
+    // ]
+  },
+  { path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/UserLogin.vue')
+  },
+  { path: '/signUp',
+    name: 'signUp',
+    component: () => import('@/views/signUp/SignUp.vue')
   },
   { path: '*', redirect: '/' }
 ]

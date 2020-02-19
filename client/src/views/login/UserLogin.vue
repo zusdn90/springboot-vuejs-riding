@@ -4,25 +4,9 @@
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
-                <v-toolbar-title>Login form</v-toolbar-title>
+              <v-toolbar dark color="grey darken-1">
+                <v-toolbar-title>Seoul City Riding</v-toolbar-title>
                 <v-spacer></v-spacer>
-                <v-tooltip bottom>
-                  <template v-slot:activator="{ on }">
-                    <v-btn :href="source" icon large target="_blank" v-on="on">
-                      <v-icon large>code</v-icon>
-                    </v-btn>
-                  </template>
-                  <span>Source</span>
-                </v-tooltip>
-                <v-tooltip right>
-                  <template v-slot:activator="{ on }">
-                    <v-btn icon large href="https://codepen.io/johnjleider/pen/wyYVVj" target="_blank" v-on="on">
-                      <v-icon large>mdi-codepen</v-icon>
-                    </v-btn>
-                  </template>
-                  <span>Codepen</span>
-                </v-tooltip>
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -32,7 +16,12 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary">Login</v-btn>
+                <v-btn
+                  round large dark ripple
+                  color="teal"
+                  @click="authUser">
+                  Login
+                </v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>

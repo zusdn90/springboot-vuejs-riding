@@ -23,7 +23,8 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
       <v-btn flat to='/login'>로그인</v-btn>
-      <v-btn flat>회원가입</v-btn>
+      <v-btn flat to='/signUp'>회원가입</v-btn>
+      <v-btn flat>이용안내</v-btn>
     </v-toolbar-items>
     </v-toolbar>
     <v-content>
