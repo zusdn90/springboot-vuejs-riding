@@ -35,6 +35,15 @@
                     :rules="[v => !!v || 'pwd is required']"
                     type="password">
                   </v-text-field>
+                  <v-text-field
+                    v-model="signUpOption.userPhoneNumber"
+                    id="phoneNumber"
+                    prepend-icon="phone"
+                    name="phoneNumber"
+                    label="phoneNumber"
+                    :rules="[v => !!v || 'phoneNumber is required']"
+                    type="text">
+                  </v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -60,9 +69,6 @@ import axios, { AxiosPromise } from "axios"
 
 @Component
 export default class SignUp extends Vue {
-  private userId: string = ""
-  private userEmail: string = ""
-  private userPwd: string = ""
   private signUpOption: SignUpInfo = new SignUpInfo()
 
   // ------------------------------------------------------------
@@ -76,13 +82,6 @@ export default class SignUp extends Vue {
    * 회원가입을 수행한다.
    */
   private async userSignInfoSave () {
-    const data = {
-      "userId": this.userId,
-      "userEmail": this.userEmail,
-      "userPwd": btoa(this.userPwd)
-      // password: btoa(this.userPwd)
-
-    }
     const config = {
       headers: {
         "Content-Type": "application/json"
