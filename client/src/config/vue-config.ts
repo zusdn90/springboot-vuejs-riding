@@ -18,12 +18,6 @@ Vue.use(VueLogger, vueLoggerOptions)
 
 // Vue.use(VuetifyDialog)
 
-// Vue.use(VueProgressBar, {
-//   color: '#ff3a3a',
-//   failedColor: '#ff660c',
-//   thickness: '3px'
-// })
-
 Object.keys(modules).forEach((key) => {
   Vue.use(modules[key])
 })

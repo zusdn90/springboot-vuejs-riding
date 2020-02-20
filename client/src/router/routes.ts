@@ -32,6 +32,10 @@ const routes = [
     name: 'signUp',
     component: () => import('@/views/signUp/SignUp.vue')
   },
+  { path: '/map',
+    name: 'map',
+    component: () => import('@/views/map.vue')
+  },
   { path: '*', redirect: '/' }
 ]
 

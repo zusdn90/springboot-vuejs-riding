@@ -3,6 +3,7 @@ import axios, { AxiosStatic } from 'axios'
 import uuid from 'uuid/v4'
 import BizApi from '@/bizApi'
 import { DialogOptions, LogLevel } from '@/types'
+import DialogPlugin from '@/components/dialog/DialogPlugin'
 import i18n from '@/config/i18n'
 import _ from 'lodash'
 
@@ -39,6 +40,7 @@ export default {
     Vue.prototype.$msg = (key: string, params?: {}) => i18n.t(`message.${key}`, params)
     Vue.prototype.$label = (key: string, params?: {}) => i18n.t(`label.${key}`, params)
     Vue.prototype.$errMsg = (key: number, params?: {}) => i18n.t(`error.${key}`, params)
+    Vue.$alert = <T>(text: string, options?: DialogOptions) => new DialogPlugin().confirm(text, options) as Promise<T>
     Vue._ = _
   }
 } as PluginObject<any>

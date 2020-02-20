@@ -8,22 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/api/common")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    @CrossOrigin("http://192.168.11.37:8081")
     @ResponseBody
-    @GetMapping(path="/add") // Map ONLY GET Requests
-    public JSONResponse<User> addNewUser (@RequestParam String name
-            , @RequestParam String email) {
-        User user = new User();
-
+    @PostMapping("/userSignUp")
+    public JSONResponse<User> addNewUser (@RequestBody User user) {
         JSONResponse<User> response = new JSONResponse<User>();
 
-        user.setName(name);
-        user.setEmail(email);
         userService.userInsert(user);
 
         response.setCode(0);

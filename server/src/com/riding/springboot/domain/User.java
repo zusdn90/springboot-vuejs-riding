@@ -8,8 +8,9 @@ public class User {
     @Id // 기본키임을 명시
     @GeneratedValue(strategy=GenerationType.AUTO)   //기본키값을 자동으로 증가하도록 설정
     private Integer id;
-    private String name;
-    private String email;
+    private String userId;
+    private String userEmail;
+    private String userPwd;
 
     public Integer getId() {
         return id;
@@ -19,21 +20,27 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
+    public String getUserPwd() {
+        return userPwd;
+    }
 
+    public void setUserPwd(String userPwd) {
+        this.userPwd = userPwd;
+    }
 }
