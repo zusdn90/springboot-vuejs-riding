@@ -1,3 +1,7 @@
 {
-    "error": "Error"
+    "error": "error",
+    "Agreement":"Agreement",
+    "IdentityVerification":"Identity Verification",
+    "EnterInformation":"Enter Information"
+
 }

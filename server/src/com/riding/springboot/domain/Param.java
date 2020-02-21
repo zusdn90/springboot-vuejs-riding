@@ -1,5 +1,6 @@
 package com.riding.springboot.domain;
 
+
 public class Param {
     private int data1;
     private String data2;
