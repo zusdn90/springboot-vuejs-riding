@@ -44,9 +44,10 @@
                     prepend-icon="person"
                     name="id"
                     label="Id"
-                    :rules="[requiredText]"
+                    :rules="[requiredId]"
                     type="text">
                   </v-text-field>
+                  <v-btn flat small @click="getCheckUserId">중복 검사</v-btn>
                   <v-text-field
                     v-model="signUpOption.userEmail"
                     prepend-icon="email"
@@ -99,7 +100,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import SignUpInfo, { SignUpInfoModel, SignUpInfoData } from '@/types/model/SignUpInfo'
 import axios, { AxiosPromise } from "axios"
-import { requiredText, requiredEmail, requiredPwd } from '@/helper/validator'
+import { requiredText, requiredEmail, requiredPwd, requiredId } from '@/helper/validator'
 
 @Component
 export default class SignUp extends Vue {
@@ -108,6 +109,7 @@ export default class SignUp extends Vue {
   private requiredText: any = requiredText
   private requiredEmail: any = requiredEmail
   private requiredPwd: any = requiredPwd
+  private requiredId: any = requiredId
 
   // ------------------------------------------------------------
   // lifecyle hook
@@ -148,7 +150,7 @@ export default class SignUp extends Vue {
       Vue.$alert('Please check the Phone Number')
     }
 
-    /* Login 검증 */
+    /* 회원가입 진행 */
     await this.$bizApi.commBiz.userSignUp(this.signUpOption.getOptionDataForSending(), config)
       .then((res) => {
         // Vue.$alert(res.data.msg)
@@ -157,6 +159,22 @@ export default class SignUp extends Vue {
           this.$router.replace('index')
         } else {
           this.$log.error('Please to check data from Server')
+        }
+      }).catch((err) => {
+        this.$log.error(err)
+      })
+  }
+
+  /**
+   * 사요 가능한 ID를 체크한다.
+   */
+  private async getCheckUserId () {
+    await this.$bizApi.commBiz.userCheckId(this.signUpOption.userId)
+      .then((res) => {
+        if (res.data.code === 0) {
+          Vue.$alert("사용 가능한 ID 입니다.")
+        } else {
+          Vue.$alert("중복된 ID 입니다.")
         }
       }).catch((err) => {
         this.$log.error(err)

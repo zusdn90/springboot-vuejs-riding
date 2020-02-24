@@ -1,21 +1,17 @@
 package com.riding.springboot.controller;
 
-import com.riding.springboot.domain.Hello;
 import com.riding.springboot.domain.User;
 import com.riding.springboot.reponse.JSONResponse;
 import com.riding.springboot.service.UserService;
-import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 @CrossOrigin("http://192.168.11.37:8081")
 @RestController
-@RequestMapping(value = "/api/common")
-public class UserController {
+@RequestMapping(value = "/api/signUp")
+public class SignUpController {
 
     @Autowired
     private UserService userService;
@@ -40,27 +36,32 @@ public class UserController {
     }
 
     /**
-     * 사용자 ID 중복체크
-     * @param user
+     * 사용가능한 사용자 ID 정보 조회
+     * @param 'ID'
      * @return
      */
     @ResponseBody
-    @PostMapping("/userCheck")
-    public JSONResponse<User> getUserDuplicateCheck (@RequestBody User user) {
-        JSONResponse<User> response = new JSONResponse<User>();
+    @GetMapping(path="/userCheckId")
+    public JSONResponse<String> getUser(@RequestParam(value="userId") String userId) {
+        JSONResponse<String> response = new JSONResponse<String>();
 
-        Iterable<User> userInfo = getAllUsers();
+        List value = userService.userAvailableId(userId);
 
-        response.setCode(0);
-        response.setMsg("사용 가능한 ID 입니다.");
-        response.setData(user);
-
+        if(value.size() == 0){
+            response.setCode(0);
+            response.setMsg("Available ID");
+            response.setData("True");
+        }else {
+            response.setCode(1);
+            response.setMsg("This is a duplicate ID");
+            response.setData("False");
+        }
         return response;
     }
 
     /**
      * 사용자 정보 전체 조회
-     * @param "null"
+     * @param 'null'
      * @return
      */
     @GetMapping(path="/all")

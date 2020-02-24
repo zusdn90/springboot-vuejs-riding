@@ -3,7 +3,7 @@ import i18n from '@/config/i18n'
 
 export default class CommBiz implements CommBizIF {
     private baseAddr: string = process.env.NODE_ENV === 'production' ? '' : 'http://192.168.11.37:8080'
-    private baseUrl: string = `${this.baseAddr}/api/common`
+    private baseUrl: string = `${this.baseAddr}/api/signUp`
     private bizAxios: AxiosInstance
 
     constructor (_bizAxios: AxiosInstance) {
@@ -11,13 +11,20 @@ export default class CommBiz implements CommBizIF {
     }
 
     private actions = {
-      // 관리자 로그인
-      userSignUp: { url: '/userSignUp', comment: "회원가입을 진행합니다." }
+      // 회원가입
+      userSignUp: { url: '/userSignUp', comment: "회원가입을 진행합니다." },
+      // ID 중복확인
+      userCheckId: { url: '/userCheckId', comment: "사용가능한 ID를 체크합니다." }
     }
 
     userSignUp = (param?: object, config?: object): AxiosPromise<any> => {
       const action = this.actions.userSignUp
       return this.callAxios(action.url, action.comment, param, config)
+    }
+
+    userCheckId = (param?: string, config?: object): AxiosPromise<any> => {
+      const action = this.actions.userCheckId
+      return this.getCallAxios(action.url, action.comment, param)
     }
     // ----------------------------------------------------------
     private callAxios = (actUrl: string, actComment: string, param?: object | string | number, config?: object): AxiosPromise<any> => {
@@ -30,9 +37,9 @@ export default class CommBiz implements CommBizIF {
       return this.bizAxios.post(`${this.baseUrl}${actUrl}`)
     }
 
-    // request get(Admin login session check)
-    private getCallAxios = (actUrl: string, actComment: string): AxiosPromise<any> => {
-      return this.bizAxios.get(`${this.baseAddr}${actUrl}`)
+    // request get
+    private getCallAxios = (actUrl: string, actComment: string, param?: object | string | number): AxiosPromise<any> => {
+      return this.bizAxios.get(`${this.baseUrl}${actUrl}`, { params: { userId: param } })
     }
 }
 

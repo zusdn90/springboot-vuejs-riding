@@ -1,7 +1,7 @@
 {
     "error": "오류",
     "Agreement":"약관동의",
-    "Identity verification":"본인인증",
-    "Enter information":"정보입력"
+    "IdentityVerification":"본인인증",
+    "EnterInformation":"정보입력"
 
 }

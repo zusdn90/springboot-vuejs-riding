@@ -1,4 +1,10 @@
 import axios, { AxiosPromise } from "axios"
+import SignUpInfo, { SignUpInfoModel, SignUpInfoData } from '@/types/model/SignUpInfo'
+
+let signUpOption: SignUpInfo = new SignUpInfo()
+let baseAddr: string = process.env.NODE_ENV === 'production' ? '' : 'http://192.168.11.37:8080'
+let baseUrl: string = `${baseAddr}/api/signUp`
+let resultUrl: string = baseUrl + "/userCheckId?userId=" + signUpOption.userId
 
 export const requiredText = (val: any): boolean | string => {
   return !!val || 'Required.'
@@ -9,13 +15,15 @@ export const requiredEmail = (val: any): boolean | string => {
 }
 
 export const requiredPwd = (val: any): boolean | string => {
-  return val.length <= 20 || 'Max 20 characters'
+  // return val.length <= 20 || 'Max 20 characters'
+  return !!val || 'Required.'
 }
 
-// export const requiredId = (val: any): boolean | string => {
-//   axios.get('http://192.168.11.37:8080//api/common/userCheck').then((res) => {
+export const requiredId = (val: any): boolean | string => {
+//   console.log("signUpOption.userId:", signUpOption.userId)
+//   axios.get(resultUrl).then((res) => {
 //     console.log(res.data)
 //   })
-//   debugger
 //   return true
-// }
+  return !!val || 'Required.'
+}
