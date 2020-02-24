@@ -106,6 +106,7 @@ import { requiredText, requiredEmail, requiredPwd, requiredId } from '@/helper/v
 export default class SignUp extends Vue {
   private signUpOption: SignUpInfo = new SignUpInfo()
   private isPwdShowOption: boolean = false
+  private isDuplicateId: boolean
   private requiredText: any = requiredText
   private requiredEmail: any = requiredEmail
   private requiredPwd: any = requiredPwd
@@ -143,11 +144,19 @@ export default class SignUp extends Vue {
     /* Password를 입력하지 않았을 경우 */
     if (this.signUpOption.userPwd === '') {
       Vue.$alert('Please check the Password')
+      return
     }
 
     /* Phone Number를 입력하지 않았을 경우 */
     if (this.signUpOption.userPhoneNumber === '') {
       Vue.$alert('Please check the Phone Number')
+      return
+    }
+
+    /* ID가 중복되었을 경우 */
+    if (this.isDuplicateId === true) {
+      Vue.$alert('사용할 수 없는 ID 입니다.')
+      return
     }
 
     /* 회원가입 진행 */
@@ -166,14 +175,16 @@ export default class SignUp extends Vue {
   }
 
   /**
-   * 사요 가능한 ID를 체크한다.
+   * 사용 가능한 ID를 체크한다.
    */
   private async getCheckUserId () {
     await this.$bizApi.commBiz.userCheckId(this.signUpOption.userId)
       .then((res) => {
         if (res.data.code === 0) {
+          this.isDuplicateId = false
           Vue.$alert("사용 가능한 ID 입니다.")
         } else {
+          this.isDuplicateId = true
           Vue.$alert("중복된 ID 입니다.")
         }
       }).catch((err) => {
