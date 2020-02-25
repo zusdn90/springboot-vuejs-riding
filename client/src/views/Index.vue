@@ -29,15 +29,6 @@
         </v-toolbar-items>
       </v-toolbar>
     </layout>
-    <layout mt-1>
-      <v-content>
-        <v-container fluid fill-height>
-          <v-flex xs4 text-xs-center>
-            <img alt="map" src="../assets/map.png">
-        </v-flex>
-        </v-container>
-      </v-content>
-    </layout>
     <layout mt-5>
       <v-footer
         dark
