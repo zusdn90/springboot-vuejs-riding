@@ -1,7 +1,7 @@
 package com.riding.springboot.service;
 
-import com.riding.springboot.domain.User;
-import com.riding.springboot.repository.UserRepository;
+import com.riding.springboot.domain.entity.User;
+import com.riding.springboot.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

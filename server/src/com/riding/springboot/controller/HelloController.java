@@ -1,7 +1,7 @@
 package com.riding.springboot.controller;
 
-import com.riding.springboot.domain.Hello;
-import com.riding.springboot.domain.Param;
+import com.riding.springboot.dto.Hello;
+import com.riding.springboot.dto.Param;
 import com.riding.springboot.reponse.JSONResponse;
 import org.springframework.web.bind.annotation.*;
 

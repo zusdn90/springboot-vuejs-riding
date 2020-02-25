@@ -1,6 +1,6 @@
 package com.riding.springboot.controller;
 
-import com.riding.springboot.domain.User;
+import com.riding.springboot.domain.entity.User;
 import com.riding.springboot.reponse.JSONResponse;
 import com.riding.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

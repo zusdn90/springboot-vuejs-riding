@@ -1,4 +1,4 @@
-package com.riding.springboot.domain;
+package com.riding.springboot.domain.entity;
 
 import lombok.Data;
 

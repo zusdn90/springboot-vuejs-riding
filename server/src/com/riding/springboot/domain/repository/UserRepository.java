@@ -1,9 +1,7 @@
-package com.riding.springboot.repository;
+package com.riding.springboot.domain.repository;
 
-import com.riding.springboot.domain.User;
-import org.springframework.data.jpa.repository.Query;
+import com.riding.springboot.domain.entity.User;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
