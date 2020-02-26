@@ -1,6 +1,4 @@
 <template>
-<layout>
-  <h-header/>
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
@@ -30,8 +28,6 @@
         </v-layout>
       </v-container>
     </v-content>
-    <h-footer/>
-</layout>
 </template>
 
 <script lang="ts">
@@ -43,6 +39,10 @@ export default class UserLogin extends Vue {
   // lifecyle hook
   mounted () {
     // this.$router.replace('intro')
+  }
+
+  private authUser () {
+    Vue.$alert("로그인 기능 구현해~~~")
   }
 }
 </script>

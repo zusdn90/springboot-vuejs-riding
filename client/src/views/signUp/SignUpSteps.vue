@@ -1,6 +1,5 @@
 <template>
-  <layout>
-    <h-header/>
+  <v-content>
     <v-spacer></v-spacer>
     <v-stepper v-model="e1">
       <v-stepper-header>
@@ -50,8 +49,7 @@
       </v-stepper-items>
     </v-stepper>
     <v-spacer></v-spacer>
-    <h-footer/>
-  </layout>
+  </v-content>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator"

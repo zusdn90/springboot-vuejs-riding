@@ -1,6 +1,4 @@
 <template>
-  <layout>
-    <h-header/>
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
@@ -66,8 +64,6 @@
         </v-layout>
       </v-container>
     </v-content>
-    <h-footer/>
-  </layout>
 </template>
 
 <script lang="ts">

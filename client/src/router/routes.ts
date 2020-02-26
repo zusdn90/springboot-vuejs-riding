@@ -11,34 +11,30 @@ const routes = [
     meta: {
       title: appId,
       authority: [Role.NONE]
-    }
+    },
     // Nested Routes
-    // children: [
-    //   {
-    //     path: '/intro',
-    //     component: () => import('@/views/Intro.vue')
-    //   },
-    //   {
-    //     path: '/login',
-    //     component: () => import('@/views/login/UserLogin.vue')
-    //   }
-    // ]
-  },
-  { path: '/login',
-    name: 'login',
-    component: () => import('@/views/login/UserLogin.vue')
-  },
-  { path: '/signUp',
-    name: 'signUp',
-    component: () => import('@/views/signUp/SignUp.vue')
-  },
-  { path: '/signUpSteps',
-    name: 'signUpSteps',
-    component: () => import('@/views/signUp/SignUpSteps.vue')
-  },
-  { path: '/boardList',
-    name: 'boardList',
-    component: () => import('@/views/board/boardList.vue')
+    children: [
+      {
+        path: '/intro',
+        component: () => import('@/views/Intro.vue')
+      },
+      {
+        path: '/login',
+        component: () => import('@/views/login/UserLogin.vue')
+      },
+      { path: '/signUp',
+        name: 'signUp',
+        component: () => import('@/views/signUp/SignUp.vue')
+      },
+      { path: '/signUpSteps',
+        name: 'signUpSteps',
+        component: () => import('@/views/signUp/SignUpSteps.vue')
+      },
+      { path: '/boardList',
+        name: 'boardList',
+        component: () => import('@/views/board/boardList.vue')
+      }
+    ]
   },
   { path: '*', redirect: '/' }
 ]
