@@ -36,8 +36,17 @@
                     label="Password"
                     maxlength="20"
                     hint="At least 20 characters"
-                    :rules="[requiredPwd]"
+                    :rules="[requiredText]"
                     type="password">
+                  </v-text-field>
+                  <v-text-field
+                    v-model="signUpOption.userName"
+                    id="userName"
+                    prepend-icon="person"
+                    name="userName"
+                    label="userName"
+                    :rules="[requiredText]"
+                    type="text">
                   </v-text-field>
                   <v-text-field
                     v-model="signUpOption.userPhoneNumber"
@@ -120,6 +129,12 @@ export default class SignUp extends Vue {
     /* Phone Number를 입력하지 않았을 경우 */
     if (this.signUpOption.userPhoneNumber === '') {
       Vue.$alert('Please check the Phone Number')
+      return
+    }
+
+    /* 이름을 입력하지 않았을 경우 */
+    if (this.signUpOption.userName === '') {
+      Vue.$alert('Please check the Name')
       return
     }
 

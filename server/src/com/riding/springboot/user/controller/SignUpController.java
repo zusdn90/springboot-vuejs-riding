@@ -94,24 +94,17 @@ public class SignUpController {
      * @param userId
      * @return
      */
-//    @ApiOperation(value = "사용자 ID 확인", notes = "입력한 ID가 사용가능한 ID인지 체크한다.")
-//    @ResponseBody
-//    @GetMapping(path="/userCheckId")
-//    public CommonResult<String> getUser(@RequestParam(value="userId") String userId) {
-//        CommonResult<String> response = new CommonResult<String>();
-//
-//        List value = userService.userAvailableId(userId);
-//
-//        if(value.size() == 0){
-//            response.setCode(0);
-//            response.setMsg("Available ID");
-//            response.setSuccess(true);
-//        }else {
-//            response.setCode(1);
-//            response.setMsg("This is a duplicate ID");
-//            response.setSuccess(false);
-//        }
-//        return response;
-//    }
+    @ApiOperation(value = "사용자 ID 확인", notes = "입력한 ID가 사용가능한 ID인지 체크한다.")
+    @ResponseBody
+    @GetMapping(path="/user/checkId")
+    public CommonResult getUser(@RequestParam(value="userId") String userId) {
+        List value = userJpaRepo.findByUserIdLike(userId);
+
+        if(value.size() == 0){
+            return responseService.getSuccessResult();
+        }else {
+            return responseService.getFailResult();
+        }
+    }
 
 }

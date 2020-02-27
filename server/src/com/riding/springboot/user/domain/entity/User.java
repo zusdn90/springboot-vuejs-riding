@@ -18,14 +18,11 @@ public class User {
 
     @Column(nullable = false, unique = true, length = 30)
     private String userId;
-
-    @Column(nullable = false, unique = true, length = 30)
-    private String userEmail;
-
+    private String userPwd;
     @Column(nullable = false, length = 100)
     private String userName;
-
-    private String userPwd;
+    @Column(nullable = false, unique = true, length = 30)
+    private String userEmail;
     private String userPhoneNumber;
 
 }

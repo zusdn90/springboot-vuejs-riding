@@ -2,7 +2,7 @@ import { AxiosPromise, AxiosInstance } from 'axios'
 import i18n from '@/config/i18n'
 
 export default class CommBiz implements CommBizIF {
-    private baseAddr: string = process.env.NODE_ENV === 'production' ? '' : 'http://192.168.11.37:8080'
+    private baseAddr: string = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080'
     private baseUrl: string = `${this.baseAddr}/api`
     private bizAxios: AxiosInstance
 
@@ -14,7 +14,7 @@ export default class CommBiz implements CommBizIF {
       // 회원가입
       userSignUp: { url: '/user', comment: "회원가입을 진행합니다." },
       // ID 중복확인
-      userCheckId: { url: '/userCheckId', comment: "사용가능한 ID를 체크합니다." }
+      userCheckId: { url: '/user/checkId', comment: "사용가능한 ID를 체크합니다." }
     }
 
     userSignUp = (param?: object, config?: object): AxiosPromise<any> => {
