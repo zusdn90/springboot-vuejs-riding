@@ -30,9 +30,9 @@ const routes = [
         name: 'signUpSteps',
         component: () => import('@/views/signUp/SignUpSteps.vue')
       },
-      { path: '/boardList',
-        name: 'boardList',
-        component: () => import('@/views/board/boardList.vue')
+      { path: '/notice',
+        name: 'notice',
+        component: () => import('@/views/notice/noticeBoardList.vue')
       }
     ]
   },

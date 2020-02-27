@@ -24,7 +24,7 @@
       <v-btn flat to="/login">로그인</v-btn>
       <v-btn flat to="/signUpSteps">회원가입</v-btn>
       <v-btn flat>이용안내</v-btn>
-      <v-btn flat>공지사항</v-btn>
+      <v-btn flat to="/notice">공지사항</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>

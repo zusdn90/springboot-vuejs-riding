@@ -14,20 +14,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
     @Bean
-    public Docket apiDocket() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
+    public Docket swaggerApi() {
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(swaggerInfo()).select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/api/**")) // 그중 /api/** 인 URL들만 필터링
-                .build();
+                .paths(PathSelectors.ant("/api/**"))
+                .build()
+                .useDefaultResponseMessages(false); // 기본으로 세팅되는 200,401,403,404 메시지를 표시 하지 않음
     }
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().
-                title("Riding REST API").
-                description("따릉이 프로젝트 REST API 문서 입니다.").
-                version("1.0").
-                build();
+    private ApiInfo swaggerInfo() {
+        return new ApiInfoBuilder().title("Spring API Documentation")
+                .description("웹 개발시 사용되는 서버 API에 대한 연동 문서입니다")
+                .license("riding").licenseUrl("https://github.com/zusdn90/springboot-vue-riding").version("1").build();
     }
 }

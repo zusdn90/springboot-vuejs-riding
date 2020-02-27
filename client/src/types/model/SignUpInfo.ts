@@ -1,6 +1,7 @@
 export default class SignUpInfo implements SignUpInfoModel {
     userId: string
     userPwd: string
+    userName: string
     userEmail: string
     userPhoneNumber: string
 
@@ -11,6 +12,7 @@ export default class SignUpInfo implements SignUpInfoModel {
       return {
         userId: this.userId,
         userPwd: btoa(this.userPwd),
+        userName: this.userName,
         userEmail: this.userEmail,
         userPhoneNumber: this.userPhoneNumber
       }
@@ -20,6 +22,7 @@ export default class SignUpInfo implements SignUpInfoModel {
 export interface SignUpInfoModel {
     userId: string
     userPwd: string
+    userName: string
     userEmail: string
     userPhoneNumber: string
 }
@@ -27,6 +30,7 @@ export interface SignUpInfoModel {
 export interface SignUpInfoData {
   userId: string
   userPwd: string
+  userName: string
   userEmail: string
   userPhoneNumber: string
 }
