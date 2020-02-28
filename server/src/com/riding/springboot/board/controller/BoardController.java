@@ -2,16 +2,18 @@ package com.riding.springboot.board.controller;
 
 import com.riding.springboot.board.dto.BoardDto;
 import com.riding.springboot.board.service.BoardService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = {"2.Board API"})
 @CrossOrigin("http://192.168.11.37:8081")
 @AllArgsConstructor
 @RestController
-@RequestMapping(value="/api/board")
+@RequestMapping(value="/api")
 public class BoardController {
     private BoardService boardService;
 
@@ -20,7 +22,7 @@ public class BoardController {
      * @param
      * @return
      */
-    @GetMapping("/list")
+    @GetMapping("/board/list")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer pageNum) {
         List<BoardDto> boardList = boardService.getBoardList(pageNum);
         Integer [] pageList = boardService.getPageList(pageNum);
@@ -35,7 +37,7 @@ public class BoardController {
      * @param
      * @return
      */
-    @GetMapping("/post")
+    @GetMapping("/board/post")
     public String write() {
         return "게시판 작성 페이지";
     }
@@ -45,7 +47,7 @@ public class BoardController {
      * @param
      * @return
      */
-    @PostMapping("/post")
+    @PostMapping("/board/post")
     public String write(BoardDto boardDto) {
         boardService.savePost(boardDto);
         return "redirect:/";
@@ -56,7 +58,7 @@ public class BoardController {
      * @param
      * @return
      */
-    @GetMapping("/post/{no}")
+    @GetMapping("/board/post/{no}")
     public String detail(@PathVariable("no") Long no, Model model){
         BoardDto boardDto = boardService.getPost(no);
 
@@ -69,7 +71,7 @@ public class BoardController {
      * @param
      * @return
      */
-    @GetMapping("/post/edit/{no}")
+    @GetMapping("/board/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
         BoardDto boardDTO = boardService.getPost(no);
 

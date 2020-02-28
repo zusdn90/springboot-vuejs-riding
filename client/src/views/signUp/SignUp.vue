@@ -11,15 +11,6 @@
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    v-model="signUpOption.userId"
-                    prepend-icon="person"
-                    name="id"
-                    label="Id"
-                    :rules="[requiredId]"
-                    type="text">
-                  </v-text-field>
-                  <v-btn flat small @click="getCheckUserId">중복 검사</v-btn>
-                  <v-text-field
                     v-model="signUpOption.userEmail"
                     prepend-icon="email"
                     name="email"
@@ -27,6 +18,7 @@
                     :rules="[requiredEmail]"
                     type="text">
                   </v-text-field>
+                  <v-btn flat small @click="getCheckUserEmail">중복 검사</v-btn>
                   <v-text-field
                     v-model="signUpOption.userPwd"
                     id="password"
@@ -108,12 +100,6 @@ export default class SignUp extends Vue {
       }
     }
 
-    /* Id를 입력하지 않았을 경우 */
-    if (this.signUpOption.userId === '') {
-      Vue.$alert('Please check the Id')
-      return
-    }
-
     /* Email를 입력하지 않았을 경우 */
     if (this.signUpOption.userEmail === '') {
       Vue.$alert('Please check the Email')
@@ -162,8 +148,8 @@ export default class SignUp extends Vue {
   /**
    * 사용 가능한 ID를 체크한다.
    */
-  private async getCheckUserId () {
-    await this.$bizApi.commBiz.userCheckId(this.signUpOption.userId)
+  private async getCheckUserEmail () {
+    await this.$bizApi.commBiz.userCheckId(this.signUpOption.userEmail)
       .then((res) => {
         if (res.data.code === 0) {
           this.isDuplicateId = false

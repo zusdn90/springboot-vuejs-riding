@@ -1,8 +1,7 @@
 export default class SignUpInfo implements SignUpInfoModel {
-    userId: string
+    userEmail: string
     userPwd: string
     userName: string
-    userEmail: string
     userPhoneNumber: string
 
     /**
@@ -10,27 +9,24 @@ export default class SignUpInfo implements SignUpInfoModel {
      */
     getOptionDataForSending (): object {
       return {
-        userId: this.userId,
+        userEmail: this.userEmail,
         userPwd: btoa(this.userPwd),
         userName: this.userName,
-        userEmail: this.userEmail,
         userPhoneNumber: this.userPhoneNumber
       }
     }
 }
 
 export interface SignUpInfoModel {
-    userId: string
-    userPwd: string
-    userName: string
-    userEmail: string
-    userPhoneNumber: string
+  userEmail: string
+  userPwd: string
+  userName: string
+  userPhoneNumber: string
 }
 
 export interface SignUpInfoData {
-  userId: string
+  userEmail: string
   userPwd: string
   userName: string
-  userEmail: string
   userPhoneNumber: string
 }

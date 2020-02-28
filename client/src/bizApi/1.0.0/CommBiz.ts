@@ -39,7 +39,7 @@ export default class CommBiz implements CommBizIF {
 
     // request get
     private getCallAxios = (actUrl: string, actComment: string, param?: object | string | number): AxiosPromise<any> => {
-      return this.bizAxios.get(`${this.baseUrl}${actUrl}`, { params: { userId: param } })
+      return this.bizAxios.get(`${this.baseUrl}${actUrl}`, { params: { userEmail: param } })
     }
 }
 

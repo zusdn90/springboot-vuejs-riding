@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "security.oauth2.resource.jwt.key-value",
+      "type": "java.lang.String",
+      "description": "Description for security.oauth2.resource.jwt.key-value."
+    },
+    {
+      "name": "security.oauth2.resource.jwt.key-value",
+      "type": "java.lang.String",
+      "description": "Description for security.oauth2.resource.jwt.key-value."
+    }
+  ] }
