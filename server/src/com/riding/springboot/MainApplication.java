@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 
 @EnableJpaAuditing	// 생성시간, 수정시간 자동화
 @SpringBootApplication
@@ -15,6 +16,11 @@ public class MainApplication {
 		System.setProperty("spring.devtools.restart.enabled", "false");
 		System.setProperty("spring.devtools.liveload.enabled", "true");
 		SpringApplication.run(MainApplication.class, args);
+	}
+
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
 	}
 
 	@Bean

@@ -1,6 +1,7 @@
 package com.riding.springboot.user.controller;
 
 import com.riding.springboot.advice.exception.CEmailSigninFailedException;
+import com.riding.springboot.advice.exception.CUserNotFoundException;
 import com.riding.springboot.config.security.JwtTokenProvider;
 import com.riding.springboot.user.domain.entity.User;
 import com.riding.springboot.user.domain.repository.UserRepository;

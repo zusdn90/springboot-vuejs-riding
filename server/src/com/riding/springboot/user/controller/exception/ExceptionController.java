@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExceptionController {
 
     @GetMapping(value = "/entrypoint")
-    public CommonResult entrypointException() {
-        throw  new CAuthenticationEntryPointException();
+    public CommonResult entrypointException() throws CAuthenticationEntryPointException {
+        throw new CAuthenticationEntryPointException();
     }
 }
