@@ -25,13 +25,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    // id 중복 체크 쿼리
-    public List<User> userAvailableId(String id){
-        return userRepository.findByUserEmailLike(id);
-    }
-
     // delete 쿼리 수행
-    public void userDelete(int id){
+    public void userDelete(long id){
         userRepository.deleteById(id);
     }
 

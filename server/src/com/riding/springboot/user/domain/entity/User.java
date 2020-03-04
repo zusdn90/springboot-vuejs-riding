@@ -22,19 +22,19 @@ import java.util.stream.Collectors;
 public class User implements UserDetails {
     @Id // 기본키임을 명시
     @GeneratedValue(strategy=GenerationType.AUTO)   //기본키값을 자동으로 증가하도록 설정
-    private Integer id; //회원번호
+    private long msrl; //회원번호
 
     @Column(nullable = false, unique = true, length = 30)
-    private String userEmail;
+    private String uid;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false, length = 100)
-    private String userPwd;
+    private String password;
 
     @Column(nullable = false, length = 100)
-    private String userName;
+    private String name;
 
-    private String userPhoneNumber;
+    private String phoneNumber;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
@@ -44,17 +44,10 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Override
-    public String getPassword() {
-        return this.userPwd;
-    }
-
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Override
     public String getUsername() {
-        return this.userEmail;
+        return this.uid;
     }
 
     @Override

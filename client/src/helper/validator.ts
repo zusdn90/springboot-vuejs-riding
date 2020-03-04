@@ -4,7 +4,7 @@ import SignUpInfo, { SignUpInfoModel, SignUpInfoData } from '@/types/model/SignU
 let signUpOption: SignUpInfo = new SignUpInfo()
 let baseAddr: string = process.env.NODE_ENV === 'production' ? '' : 'http://192.168.11.37:8080'
 let baseUrl: string = `${baseAddr}/api/signUp`
-let resultUrl: string = baseUrl + "/userCheckId?userEmail=" + signUpOption.userEmail
+let resultUrl: string = baseUrl + "/userCheckId?userEmail=" + signUpOption.uid
 
 export const requiredText = (val: any): boolean | string => {
   return !!val || 'Required.'

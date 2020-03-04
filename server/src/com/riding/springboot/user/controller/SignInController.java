@@ -37,12 +37,12 @@ public class SignInController {
                                        @ApiParam(value = "비밀번호", required = true) @RequestParam String password) {
 
 
-        User user = userRepository.findByUserEmail(id).orElseThrow(CEmailSigninFailedException::new);
+        User user = userRepository.findByUid(id).orElseThrow(CEmailSigninFailedException::new);
 
         if(!passwordEncoder.matches(password, user.getPassword()))
             throw new CEmailSigninFailedException();
 
-        return responseService.getSingleResult(jwtTokenProvider.createToken(user.getUsername(), user.getRoles()));
+        return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getMsrl()), user.getRoles()));
 
     }
 
@@ -50,12 +50,14 @@ public class SignInController {
     @GetMapping(value = "/signup")
     public CommonResult signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
                                @ApiParam(value = "비밀번호", required = true) @RequestParam String password,
-                               @ApiParam(value = "이름", required = true) @RequestParam String name) {
+                               @ApiParam(value = "이름", required = true) @RequestParam String name,
+                               @ApiParam(value = "핸드폰번호", required = true) @RequestParam String phoneNumber) {
 
         userRepository.save(User.builder()
-                .userEmail(id)
-                .userPwd(passwordEncoder.encode(password))
-                .userName(name)
+                .uid(id)
+                .password(passwordEncoder.encode(password))
+                .name(name)
+                .phoneNumber(phoneNumber)
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
         return responseService.getSuccessResult();

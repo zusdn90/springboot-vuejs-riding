@@ -4,6 +4,7 @@ import com.riding.springboot.advice.exception.CUserNotFoundException;
 import com.riding.springboot.user.domain.entity.User;
 import com.riding.springboot.user.domain.repository.UserRepository;
 import com.riding.springboot.user.reponse.CommonResult;
+import com.riding.springboot.user.reponse.ListResult;
 import com.riding.springboot.user.reponse.SingleResult;
 import com.riding.springboot.user.service.ResponseService;
 import com.riding.springboot.user.service.UserService;
@@ -37,8 +38,8 @@ public class SignUpController {
     })
     @ApiOperation(value = "회원 리스트 조회", notes = "모든 회원을 조회한다.")
     @GetMapping(path="/users")
-    public @ResponseBody Iterable<User> getAllUsers() {
-        return userService.userSelect();
+    public @ResponseBody ListResult<User> getAllUsers() {
+        return responseService.getListResult(userJpaRepo.findAll());
     }
 
     /**
@@ -49,14 +50,14 @@ public class SignUpController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = false, dataType = "String", paramType = "header")
     })
-    @ApiOperation(value = "회원 단건 조회", notes = "회원번호(msrl)로 회원을 조회한다")
+    @ApiOperation(value = "회원 단건 조회", notes = "회원번호(id)로 회원을 조회한다")
     @GetMapping(value = "/user")
     public SingleResult<User> findUserById(@ApiParam(value = "언어", defaultValue = "ko") @RequestParam String lang) {
         // SecurityContext에서 인증받은 회원의 정보를 얻어온다.
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String id = authentication.getName();
         // 결과데이터가 단일건인경우 getSingleResult를 이용해서 결과를 출력한다.
-        return responseService.getSingleResult(userJpaRepo.findByUserEmail(id).orElseThrow(CUserNotFoundException::new));
+        return responseService.getSingleResult(userJpaRepo.findByUid(id).orElseThrow(CUserNotFoundException::new));
     }
 
     /**
@@ -111,20 +112,20 @@ public class SignUpController {
 
     /**
      * 사용가능한 사용자 emil 정보 조회
-     * @param email
+     * @param id
      * @return
      */
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = false, dataType = "String", paramType = "header")
+    })
     @ApiOperation(value = "사용자 ID 확인", notes = "입력한 ID가 사용가능한 ID인지 체크한다.")
-    @ResponseBody
     @GetMapping(path="/user/checkId")
-    public CommonResult getUser(@RequestParam(value="userId") String email) {
-        List value = userJpaRepo.findByUserEmailLike(email);
-
-        if(value.size() == 0){
-            return responseService.getSuccessResult();
-        }else {
-            return responseService.getFailResult();
-        }
+    public SingleResult<User> getUserCheck(@ApiParam(value = "언어", defaultValue = "ko") @RequestParam String lang) {
+        // SecurityContext에서 인증받은 회원의 정보를 얻어온다.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String id = authentication.getName();
+        // 결과데이터가 단일건인경우 getSingleResult를 이용해서 결과를 출력한다.
+        return responseService.getSingleResult(userJpaRepo.findByUid(id).orElseThrow(CUserNotFoundException::new));
     }
 
 }
