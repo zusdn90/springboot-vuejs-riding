@@ -1,0 +1,30 @@
+spring:
+  messages:
+    basename: i18n/exception
+    encoding: UTF-8
+  mvc:
+    static-path-pattern: /dist/**
+  resources:
+    add-mappings: true
+    static-locations: classpath:/dist/
+  datasouce:
+    url: jdbc:mysql://127.0.0.1:3306/matrix?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    username: matrix
+    password: matrix
+    hikari:
+    idle-timeout: 30000
+    max-lifetime: 1200000
+    connection-timeout: 20000
+    minimum-idle: 5
+    maximum-pool-size: 12
+    auto-commit: true
+  jwt:
+    secrect: test
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
