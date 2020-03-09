@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: local # 디폴트 환경
   messages:
     basename: i18n/exception
     encoding: UTF-8
@@ -7,20 +9,6 @@ spring:
   resources:
     add-mappings: true
     static-locations: classpath:/dist/
-  datasource:
-    url: jdbc:mysql://192.168.0.50/matrix_hhw?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
-    username: matrix_hhw
-    password: matrix_hhw
-  jwt:
-    secrect: test
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        format_sql: true
-    show-sql: true
   social:
     kakao:
       client_id: 4d17665499de45f706d8482e0e240aae # 앱생성시 받은 REST API 키
@@ -29,5 +17,5 @@ spring:
         login: https://kauth.kakao.com/oauth/authorize
         token: https://kauth.kakao.com/oauth/token
         profile: https://kapi.kakao.com/v2/user/me
-  url:
-    base: http://localhost:8080
+  jwt:
+    secrect: test
