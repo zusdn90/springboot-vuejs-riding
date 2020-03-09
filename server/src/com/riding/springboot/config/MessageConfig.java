@@ -1,7 +1,6 @@
 package com.riding.springboot.config;
 
 import net.rakugakibox.util.YamlResourceBundle;
-import org.mapstruct.ObjectFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -44,8 +43,8 @@ public class MessageConfig implements WebMvcConfigurer {
                                        @Value("${spring.messages.encoding}") String encoding){
 
         YamlMessageSource ms = new YamlMessageSource();
-        ms.setBasename("i18n/exception");
-        ms.setDefaultEncoding("UTF-8");
+        ms.setBasename(basename);
+        ms.setDefaultEncoding(encoding);
         ms.setAlwaysUseMessageFormat(true);
         ms.setUseCodeAsDefaultMessage(true);
         ms.setFallbackToSystemLocale(true);

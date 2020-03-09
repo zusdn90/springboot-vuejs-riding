@@ -14,7 +14,9 @@ export default class CommBiz implements CommBizIF {
       // 회원가입
       userSignUp: { url: '/user', comment: "회원가입을 진행합니다." },
       // ID 중복확인
-      userCheckId: { url: '/user/checkId', comment: "사용가능한 ID를 체크합니다." }
+      userCheckId: { url: '/user/checkId', comment: "사용가능한 ID를 체크합니다." },
+      // kakao로그인
+      kakaoLogin: { url: '/social/login/url', comment: "kakao로그인 연동을 위한 url" }
     }
 
     userSignUp = (param?: object, config?: object): AxiosPromise<any> => {
@@ -25,6 +27,10 @@ export default class CommBiz implements CommBizIF {
     userCheckId = (param?: string, config?: object): AxiosPromise<any> => {
       const action = this.actions.userCheckId
       return this.getCallAxios(action.url, action.comment, param)
+    }
+    kakaoLogin = (param?: string, config?: object): AxiosPromise<any> => {
+      const action = this.actions.kakaoLogin
+      return this.getCallAxios(action.url, action.comment)
     }
     // ----------------------------------------------------------
     private callAxios = (actUrl: string, actComment: string, param?: object | string | number, config?: object): AxiosPromise<any> => {

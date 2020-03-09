@@ -1,8 +1,6 @@
 package com.riding.springboot.advice;
 
-import com.riding.springboot.advice.exception.CAuthenticationEntryPointException;
-import com.riding.springboot.advice.exception.CEmailSigninFailedException;
-import com.riding.springboot.advice.exception.CUserNotFoundException;
+import com.riding.springboot.advice.exception.*;
 import com.riding.springboot.user.reponse.CommonResult;
 import com.riding.springboot.user.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -48,17 +46,32 @@ public class ExceptionAdvice {
     }
 
     @ExceptionHandler(CAuthenticationEntryPointException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public CommonResult authenticationEntryPointException(HttpServletRequest request, CAuthenticationEntryPointException e) {
         return responseService.getFailResult(Integer.parseInt(getMessage("entryPointException.code")), getMessage("entryPointException.msg"));
     }
 
     @ExceptionHandler(AccessDeniedException.class)
-    public CommonResult AccessDeniedException(HttpServletRequest request, AccessDeniedException e) {
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public CommonResult accessDeniedException(HttpServletRequest request, AccessDeniedException e) {
         return responseService.getFailResult(Integer.parseInt(getMessage("accessDenied.code")), getMessage("accessDenied.msg"));
+    }
+
+    @ExceptionHandler(CCommunicationException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public CommonResult communicationException(HttpServletRequest request, CCommunicationException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("communicationError.code")), getMessage("communicationError.msg"));
+    }
+
+    @ExceptionHandler(CUserExistException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public CommonResult communicationException(HttpServletRequest request, CUserExistException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("existingUser.code")), getMessage("existingUser.msg"));
     }
 
     // code정보에 해당하는 메세지를 조회합니다.
     private String getMessage(String code) {
+
         return getMessage(code, null);
     }
 

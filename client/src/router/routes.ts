@@ -33,6 +33,10 @@ const routes = [
       { path: '/notice',
         name: 'notice',
         component: () => import('@/views/notice/noticeBoardList.vue')
+      },
+      { path: '/social',
+        name: 'social',
+        component: () => import('@/views/login/social/Login.vue')
       }
     ]
   },

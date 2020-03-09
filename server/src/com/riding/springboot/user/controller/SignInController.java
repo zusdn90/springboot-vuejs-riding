@@ -4,21 +4,21 @@ import com.riding.springboot.advice.exception.CEmailSigninFailedException;
 import com.riding.springboot.advice.exception.CUserNotFoundException;
 import com.riding.springboot.config.security.JwtTokenProvider;
 import com.riding.springboot.user.domain.entity.User;
+import com.riding.springboot.user.domain.model.KakaoProfile;
 import com.riding.springboot.user.domain.repository.UserRepository;
 import com.riding.springboot.user.reponse.CommonResult;
 import com.riding.springboot.user.reponse.SingleResult;
 import com.riding.springboot.user.service.ResponseService;
+import com.riding.springboot.user.service.social.KakaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @Api(tags = "3. Sign")
 @RequiredArgsConstructor
@@ -29,6 +29,7 @@ public class SignInController {
     private final JwtTokenProvider jwtTokenProvider;
     private final ResponseService responseService;
     private final PasswordEncoder passwordEncoder;
+    private final KakaoService kakaoService;
 
 
     @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
@@ -42,6 +43,17 @@ public class SignInController {
         if(!passwordEncoder.matches(password, user.getPassword()))
             throw new CEmailSigninFailedException();
 
+        return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getMsrl()), user.getRoles()));
+
+    }
+
+    @ApiOperation(value = "소셜 로그인", notes = "소셜 회원 로그인을 한다.")
+    @PostMapping(value = "/signin/{provider}")
+    public SingleResult<String> signinKakao(@ApiParam(value = "서비스 제공자 provider", required = true, defaultValue = "kakao") @PathVariable String provider,
+                                            @ApiParam(value = "소셜 access_token", required = true) @RequestParam String accessToken) {
+
+        KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
+        User user = userRepository.findByUidAndProvider(String.valueOf(profile.getId()), provider).orElseThrow(CUserNotFoundException::new);
         return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getMsrl()), user.getRoles()));
 
     }
@@ -61,5 +73,29 @@ public class SignInController {
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
         return responseService.getSuccessResult();
+    }
+
+    @ApiOperation(value = "소셜 계정 가입", notes = "소셜 계정 회원가입을 한다.")
+    @PostMapping(value="/signup/{provider}")
+    public CommonResult signupKakao(@ApiParam(value = "서비스 제공자 provider", required = true, defaultValue = "kakao") @PathVariable String provider,
+                                    @ApiParam(value = "소셜 access_token", required = true) @RequestParam String accessToken,
+                                    @ApiParam(value = "이름", required = true) @RequestParam String name) {
+
+        KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
+        Optional<User> user = userRepository.findByUidAndProvider(String.valueOf(profile.getId()), provider);
+
+        if(user.isPresent())
+            throw new CUserNotFoundException();
+
+        userRepository.save(User.builder()
+                    .uid(String.valueOf(profile.getId()))
+                    .provider(provider)
+                    .name(name)
+                    .roles(Collections.singletonList("ROLE_USER"))
+                    .build());
+
+        return responseService.getSuccessResult();
+
+
     }
 }

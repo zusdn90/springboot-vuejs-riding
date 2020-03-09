@@ -24,7 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override   //ignore check swagger resource
     public void configure(WebSecurity web){
-        web.ignoring().antMatchers("/v2/api-docs", "/swagger-resources/**","/dist/swagger-ui.html", "/dist/webjars/**", "/dist/swagger/**","/dist/css/**","/dist/js/**");
+        web.ignoring().antMatchers("/v2/api-docs", "/swagger-resources/**","/dist/swagger-ui.html",
+                                                "/dist/webjars/**", "/dist/swagger/**","/dist/css/**","/dist/js/**",
+                                                "/dist/img/**","/dist/lib/**");
     }
 
     @Override
@@ -35,10 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt token으로 인증하므로 세션은 필요없으므로 생성안함.
                 .and()
                     .authorizeRequests() // 다음 리퀘스트에 대한 사용권한 체크
-                    .antMatchers("/api/auth/signin","/api/auth/signup").permitAll() // 가입 및 인증 주소는 누구나 접근가능
-                    .antMatchers(HttpMethod.GET, "/exception/**").permitAll()
-                    .antMatchers("/*/users").hasRole("ADMIN")
-                    .anyRequest().hasRole("USER") // 그외 나머지 요청은 모두 인증된 회원만 접근 가능
+                        .antMatchers("/api/auth/signin","/api/auth/signin/**","/api/auth/signup","/api/auth/signup/**","/api/social/**").permitAll() // 가입 및 인증 주소는 누구나 접근가능
+                        .antMatchers(HttpMethod.GET, "/exception/**","/helloworld/**","/dist").permitAll()  // 등록된 GET요청 리소스는 누구나 접근가능
+                        .antMatchers("/*/users").hasRole("ADMIN")
+                        .anyRequest().hasRole("USER") // 그외 나머지 요청은 모두 인증된 회원만 접근 가능
                 .and()
                     .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 .and()

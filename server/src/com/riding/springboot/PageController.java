@@ -5,14 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class PageController implements ErrorController {
-    @RequestMapping(value = {"/", "/error"})
+public class PageController {
+    @RequestMapping(value = "/dist")
     public String index() {
         return "/dist/index.html";
-    }
-
-    @Override
-    public String getErrorPath() {
-        return "/error";
     }
 }
