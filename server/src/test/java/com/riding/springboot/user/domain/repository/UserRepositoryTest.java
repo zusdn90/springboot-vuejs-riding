@@ -1,8 +1,10 @@
 package com.riding.springboot.user.domain.repository;
 
-import com.riding.springboot.user.domain.entity.User;
+
+import com.riding.springboot.domain.entity.User;
+import com.riding.springboot.domain.repository.UserRepository;
+
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
