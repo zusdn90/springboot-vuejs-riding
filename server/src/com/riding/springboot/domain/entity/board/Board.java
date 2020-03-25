@@ -1,5 +1,6 @@
-package com.riding.springboot.domain.entity;
+package com.riding.springboot.domain.entity.board;
 
+import com.riding.springboot.domain.entity.Time;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

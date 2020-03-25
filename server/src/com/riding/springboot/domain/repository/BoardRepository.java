@@ -1,6 +1,6 @@
 package com.riding.springboot.domain.repository;
 
-import com.riding.springboot.domain.entity.Board;
+import com.riding.springboot.domain.entity.board.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

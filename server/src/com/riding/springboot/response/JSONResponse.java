@@ -1,4 +1,4 @@
-package com.riding.springboot.board.reponse;
+package com.riding.springboot.response;
 
 public class JSONResponse<T> {
     private int code;

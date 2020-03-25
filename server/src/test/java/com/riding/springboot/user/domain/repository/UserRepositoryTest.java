@@ -1,7 +1,7 @@
 package com.riding.springboot.user.domain.repository;
 
 
-import com.riding.springboot.domain.entity.User;
+import com.riding.springboot.domain.entity.user.User;
 import com.riding.springboot.domain.repository.UserRepository;
 
 import org.junit.jupiter.api.DisplayName;

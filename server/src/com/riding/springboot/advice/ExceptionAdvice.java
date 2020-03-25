@@ -1,12 +1,10 @@
 package com.riding.springboot.advice;
 
 import com.riding.springboot.advice.exception.*;
-import com.riding.springboot.user.reponse.CommonResult;
-import com.riding.springboot.user.service.ResponseService;
+import com.riding.springboot.response.CommonResult;
+import com.riding.springboot.service.ResponseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -15,8 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.InputStream;
-import java.util.Properties;
 
 @RequiredArgsConstructor
 @RestControllerAdvice   //예외 발생 시 json형태로 결과를 반환하려면 @RestControllerAdvice를 클래스에 선언
@@ -67,6 +63,18 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public CommonResult communicationException(HttpServletRequest request, CUserExistException e) {
         return responseService.getFailResult(Integer.valueOf(getMessage("existingUser.code")), getMessage("existingUser.msg"));
+    }
+
+    @ExceptionHandler(CNotOwnerException.class)
+    @ResponseStatus(HttpStatus.NON_AUTHORITATIVE_INFORMATION)
+    public CommonResult notOwnerException(HttpServletRequest request, CNotOwnerException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("notOwner.code")), getMessage("notOwner.msg"));
+    }
+
+    @ExceptionHandler(CResourceNotExistException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public CommonResult resourceNotExistException(HttpServletRequest request, CResourceNotExistException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("resourceNotExist.code")), getMessage("resourceNotExist.msg"));
     }
 
     // code정보에 해당하는 메세지를 조회합니다.

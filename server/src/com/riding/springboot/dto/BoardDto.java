@@ -1,7 +1,7 @@
 package com.riding.springboot.dto;
 
 
-import com.riding.springboot.domain.entity.Board;
+import com.riding.springboot.domain.entity.board.Board;
 import lombok.*;
 
 import java.time.LocalDateTime;

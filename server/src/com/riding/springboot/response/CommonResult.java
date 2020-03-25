@@ -1,4 +1,4 @@
-package com.riding.springboot.user.reponse;
+package com.riding.springboot.response;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

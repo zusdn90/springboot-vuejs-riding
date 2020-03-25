@@ -1,7 +1,7 @@
 package com.riding.springboot.domain.repository;
 
 
-import com.riding.springboot.domain.entity.User;
+import com.riding.springboot.domain.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

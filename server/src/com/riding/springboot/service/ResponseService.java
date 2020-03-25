@@ -1,8 +1,8 @@
-package com.riding.springboot.user.service;
+package com.riding.springboot.service;
 
-import com.riding.springboot.user.reponse.CommonResult;
-import com.riding.springboot.user.reponse.ListResult;
-import com.riding.springboot.user.reponse.SingleResult;
+import com.riding.springboot.response.CommonResult;
+import com.riding.springboot.response.ListResult;
+import com.riding.springboot.response.SingleResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

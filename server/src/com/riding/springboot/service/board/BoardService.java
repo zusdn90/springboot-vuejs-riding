@@ -1,7 +1,7 @@
 package com.riding.springboot.service.board;
 
 
-import com.riding.springboot.domain.entity.Board;
+import com.riding.springboot.domain.entity.board.Board;
 import com.riding.springboot.domain.repository.BoardRepository;
 import com.riding.springboot.dto.BoardDto;
 import lombok.AllArgsConstructor;

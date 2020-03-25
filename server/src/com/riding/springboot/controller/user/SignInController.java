@@ -3,9 +3,12 @@ package com.riding.springboot.controller.user;
 import com.riding.springboot.advice.exception.CEmailSigninFailedException;
 import com.riding.springboot.advice.exception.CUserNotFoundException;
 import com.riding.springboot.config.security.JwtTokenProvider;
-import com.riding.springboot.domain.entity.User;
+import com.riding.springboot.domain.entity.user.User;
 import com.riding.springboot.domain.model.KakaoProfile;
 import com.riding.springboot.domain.repository.UserRepository;
+import com.riding.springboot.response.CommonResult;
+import com.riding.springboot.response.SingleResult;
+import com.riding.springboot.service.ResponseService;
 import com.riding.springboot.service.social.KakaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,15 +27,15 @@ import java.util.Optional;
 public class SignInController {
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
-    private final com.riding.springboot.user.service.ResponseService responseService;
+    private final ResponseService responseService;
     private final PasswordEncoder passwordEncoder;
     private final KakaoService kakaoService;
 
 
     @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
     @GetMapping(value = "/signin")
-    public com.riding.springboot.user.reponse.SingleResult<String> signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
-                                                                          @ApiParam(value = "비밀번호", required = true) @RequestParam String password) {
+    public SingleResult<String> signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
+                                       @ApiParam(value = "비밀번호", required = true) @RequestParam String password) {
 
 
         User user = userRepository.findByUid(id).orElseThrow(CEmailSigninFailedException::new);
@@ -46,7 +49,7 @@ public class SignInController {
 
     @ApiOperation(value = "소셜 로그인", notes = "소셜 회원 로그인을 한다.")
     @PostMapping(value = "/signin/{provider}")
-    public com.riding.springboot.user.reponse.SingleResult<String> signinKakao(@ApiParam(value = "서비스 제공자 provider", required = true, defaultValue = "kakao") @PathVariable String provider,
+    public SingleResult<String> signinKakao(@ApiParam(value = "서비스 제공자 provider", required = true, defaultValue = "kakao") @PathVariable String provider,
                                                                                @ApiParam(value = "소셜 access_token", required = true) @RequestParam String accessToken) {
 
         KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
@@ -57,10 +60,10 @@ public class SignInController {
 
     @ApiOperation(value = "회원가입", notes = "회원가입을 한다.")
     @GetMapping(value = "/signup")
-    public com.riding.springboot.user.reponse.CommonResult signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
-                                                                  @ApiParam(value = "비밀번호", required = true) @RequestParam String password,
-                                                                  @ApiParam(value = "이름", required = true) @RequestParam String name,
-                                                                  @ApiParam(value = "핸드폰번호", required = true) @RequestParam String phoneNumber) {
+    public CommonResult signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
+                               @ApiParam(value = "비밀번호", required = true) @RequestParam String password,
+                               @ApiParam(value = "이름", required = true) @RequestParam String name,
+                               @ApiParam(value = "핸드폰번호", required = true) @RequestParam String phoneNumber) {
 
         userRepository.save(User.builder()
                 .uid(id)
@@ -74,7 +77,7 @@ public class SignInController {
 
     @ApiOperation(value = "소셜 계정 가입", notes = "소셜 계정 회원가입을 한다.")
     @PostMapping(value="/signup/{provider}")
-    public com.riding.springboot.user.reponse.CommonResult signupKakao(@ApiParam(value = "서비스 제공자 provider", required = true, defaultValue = "kakao") @PathVariable String provider,
+    public CommonResult signupKakao(@ApiParam(value = "서비스 제공자 provider", required = true, defaultValue = "kakao") @PathVariable String provider,
                                                                        @ApiParam(value = "소셜 access_token", required = true) @RequestParam String accessToken,
                                                                        @ApiParam(value = "이름", required = true) @RequestParam String name) {
 
