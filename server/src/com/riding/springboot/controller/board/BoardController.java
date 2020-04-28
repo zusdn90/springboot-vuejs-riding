@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = {"2.Board API"})
+@Api(tags = {"5. Board TEST API"})
 @CrossOrigin("http://192.168.11.37:8081")
 @AllArgsConstructor
 @RestController

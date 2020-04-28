@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-@Api(tags = "4. Kakao Login")
+@Api(tags = "4. Kakao Login Page")
 @RequiredArgsConstructor
 @Controller
 @RequestMapping(value="/api/social/login")

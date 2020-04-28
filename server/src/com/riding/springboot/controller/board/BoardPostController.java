@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@Api(tags = {"5. BoardPost"})
+@Api(tags = {"2. Board API"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/board")

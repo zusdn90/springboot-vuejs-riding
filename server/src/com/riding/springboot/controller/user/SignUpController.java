@@ -14,7 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = {"1.User API"})
+@Api(tags = {"1. User API"})
 @CrossOrigin("http://192.168.11.37:8081")
 @RequiredArgsConstructor
 @RestController

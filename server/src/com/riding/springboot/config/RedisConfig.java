@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.CacheKeyPrefix;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -33,8 +32,8 @@ public class RedisConfig {
 
         // 캐시키별로 default 유효시간 설정
         Map<String, RedisCacheConfiguration> cacheConfigurations = new HashMap<>();
-        cacheConfigurations.put(CacheKey.USER, RedisCacheConfiguration.defaultCacheConfig())
-                .entryTtl(Duration.ofSeconds(CacheKey.USER_EXPIRE_SEC));
+        cacheConfigurations.put(CacheKey.USER, RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofSeconds(CacheKey.USER_EXPIRE_SEC)));
         cacheConfigurations.put(CacheKey.BOARD, RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(CacheKey.BOARD_EXPIRE_SEC)));
         cacheConfigurations.put(CacheKey.POST, RedisCacheConfiguration.defaultCacheConfig()

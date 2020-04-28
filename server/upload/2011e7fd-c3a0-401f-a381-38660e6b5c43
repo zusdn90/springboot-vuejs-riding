@@ -1,0 +1,36 @@
+#### Repository DB Connection
+## oracle:1 Mssql2000:2 Mssql2005:21 Mssql2008:23 DB2:4 Mysql:14 Tibero:11 Cubrid:8  PostgreSQL:31
+matrix.mtxrpty.dbkind="23"
+matrix.pooluse="false"
+
+matrix.mtxrpty.userid="matrix6"
+matrix.mtxrpty.password="matrix6"
+matrix.mtxrpty.dbname="matrix6"
+matrix.mtxrpty.ipaddress="192.168.0.21"
+matrix.mtxrpty.port="1433"
+matrix.mtxrpty.drivertype="3"
+##matrix.mtxrpty.url="jndiname"
+
+matrix.defaultcontext="true"
+matrix.logerpath="D:\\01.workspace\\Tomcat7\\webapps\\release\\WEB-INF\\classes\\matrix"
+matrix.contextpath="D:\\01.workspace\\Tomcat7\\webapps\\release"
+
+matrix.responsecharset="utf-8"
+matrix.requestcharset="utf-8"
+
+matrix.installername="MTXInstaller.CAB#version=1,0,0,40"
+matrix.notsafer="true"
+matrix.mydocument="false"
+
+## Configuration Management setting
+matrix.selfcm="true"
+matrix.configmgt="1" 
+matrix.filebackup="0"
+
+##matrix.selfcmcrypt="true"
+##matrix.scheduler="false"
+matrix.ext.usedbsecurity="true"
+##matrix.ext.drmflag="1"
+matrix.usemasking="true"
+##matrix.sessiontime="3600"
+##matrix.uploadfilter="mtm,mtmz,mtx,mtxz,mtx,mtz,mtzb,mtv,mtsd,mts,mtw,xls,xlsx,jar” 
