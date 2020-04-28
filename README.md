@@ -7,7 +7,7 @@
 ### 1. 실습 환경
 - Java 8~11
 - SpringBoot 2.x
-- Spring Cloud
+- SpringSecurity
 - Intellij Ultimate
 - Vuejs
 - Typescript
