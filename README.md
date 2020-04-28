@@ -1,9 +1,14 @@
 # springboot-vue-riding
 
-개요
-  
-  -SpringBoot2 framework 기반에서 RESTful api 설계 및 backend에 대한 기술력을 step by step 하기 위한 목적
 
-환경
-  
-  -SpringBoot + vue (vue-cli) + Typescript
+### 0. 개요
+- SpringBoot2.x 기반 RESTful api 설계 및 backend에 대한 기술력 향상을 위한 Toy Project
+
+### 1. 실습 환경
+- Java 8~11
+- SpringBoot 2.x
+- Spring Cloud
+- Intellij Ultimate
+- Vuejs
+- Typescript
+- Kakao map api
