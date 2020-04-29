@@ -2,7 +2,7 @@
   <v-card
     class="pa-3"
     flat
-    height="300px"
+    height="800px"
     img="https://cdn.vuetifyjs.com/images/toolbar/map.jpg"
   >
     <v-toolbar
@@ -35,7 +35,6 @@ export default class Index extends Vue {
   // ------------------------------------------------------------
   // lifecyle hook
   mounted () {
-    // this.$router.push('intro')
 
   }
 }

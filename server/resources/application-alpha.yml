@@ -2,7 +2,7 @@ logging:
   level:
     root: warn
     com.rest.api: info
-  path: D:/Demo/springboot-vue-riding/log
+  path: D:/study/Demo/springboot-vue-riding/log
   file:
     max-history: 7
 

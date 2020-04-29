@@ -31,6 +31,13 @@ public class SignInController {
     private final PasswordEncoder passwordEncoder;
     private final KakaoService kakaoService;
 
+    @GetMapping(value = "/test/long-process")
+    @ResponseBody
+    public String pause() throws InterruptedException {
+        Thread.sleep(10000);
+        return "Process finished";
+    }
+
 
     @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
     @GetMapping(value = "/signin")
