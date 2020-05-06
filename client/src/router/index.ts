@@ -20,7 +20,7 @@ router.beforeEach(async (to, from, next) => {
     // 페이지 접근 권한에 따른 분기 처리
     // Vue.$log.error('error!');
   }
-  next()
+  next() 
 })
 
 export default router
