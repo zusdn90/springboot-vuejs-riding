@@ -880,6 +880,13 @@
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.2.tgz?cache=0&sync_timestamp=1572464084774&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fq%2Fdownload%2F%40types%2Fq-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
 
+"@types/vue@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/vue/-/vue-2.0.0.tgz#ec77b3d89591deb9ca5cb052368aa9c32be088e7"
+  integrity sha1-7Hez2JWR3rnKXLBSNoqpwyvgiOc=
+  dependencies:
+    vue "*"
+
 "@types/webpack-env@^1.13.9":
   version "1.15.0"
   resolved "https://registry.npm.taobao.org/@types/webpack-env/download/@types/webpack-env-1.15.0.tgz#bd9956d5044b1fb43e869a9ba9148862ff98d9fd"
@@ -3508,9 +3515,9 @@ faye-websocket@~0.11.1:
     websocket-driver ">=0.5.1"
 
 figgy-pudding@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.npm.taobao.org/figgy-pudding/download/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
-  integrity sha1-hiRwESkBxyeg5JWoB0S9W6odZ5A=
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.2.tgz#b4eee8148abb01dcf1d1ac34367d59e12fa61d6e"
+  integrity sha512-0btnI/H8f2pavGMN8w40mlSKOfTK2SVJmBfBeVIj3kNw0swwgzyRq0d5TJVOwodFmtvpPeWPN/MCcfuWF0Ezbw==
 
 figures@^2.0.0:
   version "2.0.0"
@@ -7202,9 +7209,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.npm.taobao.org/ssri/download/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha1-KjxBso3UW2K2Nnbst0ABJlrp7dg=
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 
@@ -8031,10 +8038,20 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
+vue@*:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
+  integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
+
 vue@^2.6.10:
   version "2.6.11"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha1-dllNh31LEiNEBuhONSdcbVFBJcU=
+
+vuetify@^2.2.10:
+  version "2.4.10"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.4.10.tgz#e3989f3c3fa49dbb62534ba3aeca8dc890e43bab"
+  integrity sha512-ic/qg2dtXdWpCxQteyErBcBpzPvk/66u+RJOw57spZvd4BkhDUjUcOGWAruePfWmwnRryCNvpjbLZRjdt8k5BA==
 
 vuex@^3.1.2:
   version "3.1.2"
